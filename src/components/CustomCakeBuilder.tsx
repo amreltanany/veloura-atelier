@@ -101,7 +101,7 @@ export const CustomCakeBuilder: React.FC<CustomCakeBuilderProps> = ({
       productId: 'custom-bespoke-cake',
       name: `Bespoke Cake: ${selectedSponge.name}`,
       frenchName: 'Gâteau Sur Mesure Atelier',
-      image: '/src/assets/images/cake_berry_pistachio_1793892278361.jpg',
+      image: `${import.meta.env.BASE_URL}images/cake_berry_pistachio_1793892278361.jpg`,
       unitPrice: calculatedTotal,
       quantity: 1,
       selectedSize: sizeLabels[size],
@@ -122,7 +122,7 @@ export const CustomCakeBuilder: React.FC<CustomCakeBuilderProps> = ({
         {/* Studio Header */}
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-[#92542B]">
-            <span>Atelier Farine Custom Studio</span>
+            <span>VÈLÔURÁ Custom Studio</span>
             <span aria-hidden="true">·</span>
             <span>Hand-Crafted Pâtisserie</span>
           </div>

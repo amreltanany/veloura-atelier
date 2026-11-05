@@ -10,7 +10,7 @@ export const PRODUCTS: Product[] = [
     description:
       'Seven delicate layers of roasted almond joconde sponge infused with cold-brew espresso syrup, roasted Piedmont hazelnut praline buttercream, and Valrhona 70% Guanaja chocolate ganache, finished with a reflective mirror glaze and 24-karat gold leaf.',
     shortDescription: 'Piedmont hazelnut praline, 70% Valrhona ganache & 24k gold leaf.',
-    image: '/src/assets/images/cake_opera_hazelnut_1793892277802.jpg',
+    image: `${import.meta.env.BASE_URL}images/cake_opera_hazelnut_1793892277802.jpg`,
     servings: '6–8 guests',
     prepTime: '24h pre-order',
     dietary: ['Vegetarian', 'Alcohol-Free'],
@@ -33,7 +33,7 @@ export const PRODUCTS: Product[] = [
     description:
       'Fragrant sponge crafted with ground Sicilian Bronte pistachios, filled with wild alpine strawberry compote and whipped Tahitian vanilla bean mascarpone. Adorned with fresh wild berries and crystallized rose petals.',
     shortDescription: 'Bronte pistachio sponge, alpine strawberry compote & vanilla mascarpone.',
-    image: '/src/assets/images/cake_berry_pistachio_1793892278361.jpg',
+    image: `${import.meta.env.BASE_URL}images/cake_berry_pistachio_1793892278361.jpg`,
     servings: '8–10 guests',
     prepTime: '24h pre-order',
     dietary: ['Vegetarian', 'Natural Fruit Only'],
@@ -56,7 +56,7 @@ export const PRODUCTS: Product[] = [
     description:
       'Featherlight chiffon cake infused with premium single-estate bergamot Earl Grey tea, layered with house-made tart Meyer lemon curd and light Swiss meringue buttercream. Finished with candied lemon wheels and fresh garden thyme.',
     shortDescription: 'Bergamot Earl Grey infusion, Meyer lemon curd & Swiss meringue.',
-    image: '/src/assets/images/cake_citrus_earlgrey_1793892279270.jpg',
+    image: `${import.meta.env.BASE_URL}images/cake_citrus_earlgrey_1793892279270.jpg`,
     servings: '8–10 guests',
     prepTime: '24h pre-order',
     dietary: ['Vegetarian', 'Citrus Blossom'],
@@ -78,7 +78,7 @@ export const PRODUCTS: Product[] = [
     description:
       'Baked fresh at dawn using certified AOP Charentes-Poitou churned butter and stone-ground French wheat. Includes two traditional croissants, two pain au chocolat with double Valrhona batons, and two spiced cardamom cinnamon cruffins.',
     shortDescription: 'Two butter croissants, two pain au chocolat, two cardamom cruffins.',
-    image: '/src/assets/images/bakery_croissant_pastries_1793892280108.jpg',
+    image: `${import.meta.env.BASE_URL}images/bakery_croissant_pastries_1793892280108.jpg`,
     servings: '6 artisan pastries',
     prepTime: 'Same-day available',
     dietary: ['Vegetarian', 'AOP Butter'],
@@ -100,7 +100,7 @@ export const PRODUCTS: Product[] = [
     description:
       'Our showpiece multi-tiered celebration cake custom crafted to your exact palate. Choose your sponge foundations, silky ganache or fruit inserts, exterior lambeth piping, and personalized inscription plaque.',
     shortDescription: 'Multi-tiered centerpiece tailored to your unique celebration & guest count.',
-    image: '/src/assets/images/hero_bakery_signature_1793892276298.jpg',
+    image: `${import.meta.env.BASE_URL}images/hero_bakery_signature_1793892276298.jpg`,
     servings: '20–30 guests',
     prepTime: '48h pre-order',
     dietary: ['Customizable Diet', 'Gluten-Free upon request'],

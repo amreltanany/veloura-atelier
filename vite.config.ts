@@ -5,6 +5,8 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    // GitHub Pages serves from /<repo>/ (PAGES_BASE is set by the deploy workflow).
+    base: process.env.PAGES_BASE || '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

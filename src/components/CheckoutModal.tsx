@@ -38,26 +38,26 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   const [selectedDate, setSelectedDate] = useState<string>(() => {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    return tomorrow.toISOString().split('T')[0];
+    return `${tomorrow.getFullYear()}-${String(tomorrow.getMonth() + 1).padStart(2, '0')}-${String(tomorrow.getDate()).padStart(2, '0')}`;
   });
   const [selectedTimeWindow, setSelectedTimeWindow] = useState<string>('9:00 AM – 12:00 PM (Morning Fresh)');
 
   // Customer contact & shipping
-  const [fullName, setFullName] = useState('Claire Dubois');
-  const [email, setEmail] = useState('claire.dubois@example.com');
-  const [phone, setPhone] = useState('+1 (555) 234-8971');
-  const [address, setAddress] = useState('742 Evergreen Terrace');
-  const [suite, setSuite] = useState('Apt 4B');
-  const [city, setCity] = useState('New York');
-  const [postalCode, setPostalCode] = useState('10012');
-  const [deliveryNotes, setDeliveryNotes] = useState('Please leave with concierge / doorman.');
-  const [giftMessage, setGiftMessage] = useState('Wishing you a celebration as sweet as this confection! With love.');
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+  const [suite, setSuite] = useState('');
+  const [city, setCity] = useState('');
+  const [postalCode, setPostalCode] = useState('');
+  const [deliveryNotes, setDeliveryNotes] = useState('');
+  const [giftMessage, setGiftMessage] = useState('');
 
   // Payment
   const [paymentMethod, setPaymentMethod] = useState<'express-apple-pay' | 'card' | 'pickup-cash'>('card');
-  const [cardNumber, setCardNumber] = useState('•••• •••• •••• 4242');
-  const [cardExpiry, setCardExpiry] = useState('08/28');
-  const [cardCvc, setCardCvc] = useState('883');
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardExpiry, setCardExpiry] = useState('');
+  const [cardCvc, setCardCvc] = useState('');
 
   // Pricing
   const subtotal = cart.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
@@ -66,7 +66,30 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   const tax = Number((subtotal * 0.08875).toFixed(2));
   const finalTotal = subtotal + deliveryFee + tax;
 
+  // The form used to arrive pre-filled with a sample customer; now it starts empty,
+  // so check what we actually need before moving on or placing the order.
+  const [formError, setFormError] = useState<string | null>(null);
+  const contactProblem = () => {
+    if (!fullName.trim() || !phone.trim() || !email.trim()) return 'Please add your name, phone number and email.';
+    if (!/^\S+@\S+\.\S+$/.test(email.trim())) return 'Please enter a valid email address.';
+    if (fulfillmentType === 'delivery' && (!address.trim() || !postalCode.trim())) return 'Please add the delivery address and postal code.';
+    return null;
+  };
+  const paymentProblem = (method: string) =>
+    method === 'card' && (!cardNumber.trim() || !cardExpiry.trim() || !cardCvc.trim()) ? 'Please complete the card details.' : null;
+  const goToPayment = () => {
+    const problem = contactProblem();
+    setFormError(problem);
+    if (!problem) setStep(3);
+  };
+
   const handleSubmitOrder = (overrideMethod?: 'express-apple-pay') => {
+    const problem = contactProblem() ?? paymentProblem(overrideMethod ?? paymentMethod);
+    setFormError(problem);
+    if (problem) {
+      if (contactProblem()) setStep(2);
+      return;
+    }
     setIsSubmitting(true);
 
     setTimeout(() => {
@@ -307,6 +330,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     <input
                       type="text"
                       value={fullName}
+                      placeholder="Your full name"
+                      autoComplete="name"
                       onChange={(e) => setFullName(e.target.value)}
                       className="w-full px-3 py-2 text-xs rounded-lg border border-[#EDE4D6] focus:border-[#92542B] focus:outline-none"
                     />
@@ -317,6 +342,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     <input
                       type="tel"
                       value={phone}
+                      placeholder="Phone number"
+                      autoComplete="tel"
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full px-3 py-2 text-xs rounded-lg border border-[#EDE4D6] focus:border-[#92542B] focus:outline-none"
                     />
@@ -327,6 +354,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     <input
                       type="email"
                       value={email}
+                      placeholder="you@example.com"
+                      autoComplete="email"
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full px-3 py-2 text-xs rounded-lg border border-[#EDE4D6] focus:border-[#92542B] focus:outline-none"
                     />
@@ -339,6 +368,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                         <input
                           type="text"
                           value={address}
+                          placeholder="Street address"
+                          autoComplete="street-address"
                           onChange={(e) => setAddress(e.target.value)}
                           className="w-full px-3 py-2 text-xs rounded-lg border border-[#EDE4D6] focus:border-[#92542B] focus:outline-none"
                         />
@@ -349,6 +380,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                         <input
                           type="text"
                           value={suite}
+                          placeholder="Apt, suite, floor (optional)"
                           onChange={(e) => setSuite(e.target.value)}
                           className="w-full px-3 py-2 text-xs rounded-lg border border-[#EDE4D6] focus:border-[#92542B] focus:outline-none"
                         />
@@ -359,6 +391,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                         <input
                           type="text"
                           value={postalCode}
+                          placeholder="Postal code"
+                          autoComplete="postal-code"
                           onChange={(e) => setPostalCode(e.target.value)}
                           className="w-full px-3 py-2 text-xs rounded-lg border border-[#EDE4D6] focus:border-[#92542B] focus:outline-none"
                         />
@@ -384,6 +418,9 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   />
                 </div>
 
+                {formError && (
+                  <p role="alert" className="text-xs font-medium text-[#B3261E] bg-[#FCEEEE] rounded-lg px-3 py-2">{formError}</p>
+                )}
                 <div className="pt-4 flex items-center justify-between">
                   <button
                     type="button"
@@ -394,7 +431,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   </button>
                   <button
                     type="button"
-                    onClick={() => setStep(3)}
+                    onClick={goToPayment}
                     className="flex items-center gap-2 px-6 py-2.5 bg-[#231F1E] text-white text-xs font-semibold rounded-lg hover:bg-[#3D3532] transition-colors cursor-pointer"
                   >
                     <span>Proceed to Payment</span>
@@ -453,6 +490,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                         <input
                           type="text"
                           value={cardNumber}
+                          placeholder="1234 5678 9012 3456"
+                          autoComplete="cc-number"
                           onChange={(e) => setCardNumber(e.target.value)}
                           className="w-full px-3 py-2 text-xs rounded-lg border border-[#EDE4D6] focus:border-[#92542B] focus:outline-none bg-white font-mono"
                         />
@@ -466,6 +505,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                         <input
                           type="text"
                           value={cardExpiry}
+                          placeholder="MM/YY"
+                          autoComplete="cc-exp"
                           onChange={(e) => setCardExpiry(e.target.value)}
                           className="w-full px-3 py-2 text-xs rounded-lg border border-[#EDE4D6] focus:border-[#92542B] focus:outline-none bg-white font-mono"
                         />
@@ -475,6 +516,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                         <input
                           type="text"
                           value={cardCvc}
+                          placeholder="CVC"
+                          autoComplete="cc-csc"
                           onChange={(e) => setCardCvc(e.target.value)}
                           className="w-full px-3 py-2 text-xs rounded-lg border border-[#EDE4D6] focus:border-[#92542B] focus:outline-none bg-white font-mono"
                         />
@@ -483,6 +526,9 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   </div>
                 )}
 
+                {formError && (
+                  <p role="alert" className="text-xs font-medium text-[#B3261E] bg-[#FCEEEE] rounded-lg px-3 py-2">{formError}</p>
+                )}
                 <div className="pt-2 flex items-center justify-between">
                   <button
                     type="button"

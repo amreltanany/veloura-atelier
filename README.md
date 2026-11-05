@@ -6,7 +6,7 @@
 
 This contains everything you need to run your app locally.
 
-View your app in AI Studio: https://ai.studio/apps/ad0c64d2-eab2-4899-b4ab-1ce28911d162
+Live site: https://amreltanany.github.io/veloura-atelier/
 
 ## Run Locally
 

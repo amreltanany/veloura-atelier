@@ -162,7 +162,7 @@ export const OrderConfirmationModal: React.FC<OrderConfirmationModalProps> = ({
                   {order.customer.address} {order.customer.suite}, {order.customer.postalCode}
                 </p>
               ) : (
-                <p className="text-[#5F5651]">Atelier Farine Boutique, 14 Rue de Bretagne</p>
+                <p className="text-[#5F5651]">VÈLÔURÁ Boutique, 14 Rue de Bretagne</p>
               )}
             </div>
 

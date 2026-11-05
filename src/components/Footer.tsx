@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
           {/* Brand & Mission */}
           <div className="md:col-span-5 space-y-4">
             <h3 className="font-serif text-2xl font-semibold text-white tracking-tight">
-              Atelier Farine
+              VÈLÔURÁ
             </h3>
             <p className="text-xs text-[#A8988B] leading-relaxed max-w-sm">
               Parisian couture cake atelier and artisan boulangerie. Dedicated to slow fermentation,
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#C97A3E] shrink-0" />
-                <span>concierge@atelierfarine.com</span>
+                <span>concierge@veloura.com</span>
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom copyright line */}
         <div className="pt-8 border-t border-[#38312E] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#88786B]">
-          <p>© {new Date().getFullYear()} Atelier Farine Pâtisserie. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} VÈLÔURÁ Pâtisserie. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <span>Terms of Service</span>
             <span>Privacy Policy</span>

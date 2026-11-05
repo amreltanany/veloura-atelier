@@ -67,7 +67,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCatalog, onOpenCustomBuilde
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-xl overflow-hidden shadow-lg border border-[#E8DEC\-C] bg-[#F3ECE1] aspect-[4/3] lg:aspect-auto lg:h-[460px]">
               <img
-                src="/src/assets/images/hero_bakery_signature_1793892276298.jpg"
+                src={`${import.meta.env.BASE_URL}images/hero_bakery_signature_1793892276298.jpg`}
                 alt="Artisanal French bakery atelier counter with tiered celebration cake and fresh sourdough pastries"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"

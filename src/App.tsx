@@ -17,6 +17,7 @@ import { Footer } from './components/Footer';
 import { PRODUCTS } from './data/products';
 import { Product, CartItem, Order, CategoryId } from './types/bakery';
 import { Sparkles, ArrowRight, Check, Filter } from 'lucide-react';
+import { scrollToTop, scrollToElement } from './smooth-scroll';
 
 export default function App() {
   // Navigation & View state
@@ -26,7 +27,7 @@ export default function App() {
   // Cart state with localStorage persistence
   const [cart, setCart] = useState<CartItem[]>(() => {
     try {
-      const saved = localStorage.getItem('atelier_farine_cart');
+      const saved = localStorage.getItem('veloura_cart');
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
@@ -44,7 +45,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('atelier_farine_cart', JSON.stringify(cart));
+      localStorage.setItem('veloura_cart', JSON.stringify(cart));
     } catch {
       // Storage unavailable
     }
@@ -71,9 +72,7 @@ export default function App() {
       );
 
       if (existingIdx > -1) {
-        const updated = [...prevCart];
-        updated[existingIdx].quantity += item.quantity;
-        return updated;
+        return prevCart.map((i, idx) => (idx === existingIdx ? { ...i, quantity: i.quantity + item.quantity } : i));
       }
       return [item, ...prevCart];
     });
@@ -123,7 +122,7 @@ export default function App() {
     if (categoryFilter) {
       setSelectedCategory(categoryFilter as CategoryId);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToTop();
   };
 
   // Filtered products list
@@ -158,12 +157,11 @@ export default function App() {
             {/* Hero Showcase */}
             <Hero
               onExploreCatalog={() => {
-                const el = document.getElementById('catalog-section');
-                el?.scrollIntoView({ behavior: 'smooth' });
+                scrollToElement(document.getElementById('catalog-section'));
               }}
               onOpenCustomBuilder={() => {
                 setActiveView('builder');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                scrollToTop();
               }}
             />
 
@@ -240,9 +238,9 @@ export default function App() {
                     <button
                       onClick={() => {
                         setActiveView('builder');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        scrollToTop();
                       }}
-                      className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-semibold text-white bg-[#92542B] hover:bg-[#7D4520] active:scale-[0.99] rounded-lg transition-all shadow-sm cursor-pointer whitespace-nowrap"
+                      className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-semibold text-white bg-[#92542B] hover:bg-[#7D4520] active:scale-[0.99] rounded-lg transition-all shadow-sm cursor-pointer text-left sm:whitespace-nowrap"
                     >
                       <Sparkles className="w-4 h-4 text-[#F3D6B5]" />
                       <span>Launch Interactive Cake Customizer</span>
@@ -254,7 +252,7 @@ export default function App() {
                 <div className="lg:col-span-5 relative">
                   <div className="rounded-xl overflow-hidden border border-[#EDE4D6] shadow-md bg-white aspect-[4/3]">
                     <img
-                      src="/src/assets/images/cake_berry_pistachio_1793892278361.jpg"
+                      src={`${import.meta.env.BASE_URL}images/cake_berry_pistachio_1793892278361.jpg`}
                       alt="Custom Sicilian pistachio and alpine strawberry cake preview"
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover"
