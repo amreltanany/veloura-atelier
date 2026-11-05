@@ -1,0 +1,238 @@
+import { Product } from '../types/bakery';
+
+export const PRODUCTS: Product[] = [
+  {
+    id: 'opera-noisette',
+    name: 'Hazelnut & Dark Chocolate Opéra',
+    frenchName: "L'Opéra Noisette & Chocolat Noir",
+    category: 'signature-cakes',
+    price: 68,
+    description:
+      'Seven delicate layers of roasted almond joconde sponge infused with cold-brew espresso syrup, roasted Piedmont hazelnut praline buttercream, and Valrhona 70% Guanaja chocolate ganache, finished with a reflective mirror glaze and 24-karat gold leaf.',
+    shortDescription: 'Piedmont hazelnut praline, 70% Valrhona ganache & 24k gold leaf.',
+    image: '/src/assets/images/cake_opera_hazelnut_1793892277802.jpg',
+    servings: '6–8 guests',
+    prepTime: '24h pre-order',
+    dietary: ['Vegetarian', 'Alcohol-Free'],
+    flavorNotes: ['Roasted Hazelnut', 'Espresso', 'Dark Cacao'],
+    allergens: ['Dairy', 'Eggs', 'Gluten', 'Tree Nuts (Hazelnut, Almond)'],
+    isCustomizable: true,
+    defaultSweetness: 75,
+    availableSizes: [
+      { label: 'Classic (6")', servings: '6–8 guests', priceMultiplier: 1 },
+      { label: 'Large (8")', servings: '10–14 guests', priceMultiplier: 1.45 },
+      { label: 'Grand Banquet (10")', servings: '18–22 guests', priceMultiplier: 2.1 },
+    ],
+  },
+  {
+    id: 'pistache-sauvage',
+    name: 'Wild Strawberry & Sicilian Pistachio',
+    frenchName: 'Pistache Sauvage & Fraises des Bois',
+    category: 'signature-cakes',
+    price: 74,
+    description:
+      'Fragrant sponge crafted with ground Sicilian Bronte pistachios, filled with wild alpine strawberry compote and whipped Tahitian vanilla bean mascarpone. Adorned with fresh wild berries and crystallized rose petals.',
+    shortDescription: 'Bronte pistachio sponge, alpine strawberry compote & vanilla mascarpone.',
+    image: '/src/assets/images/cake_berry_pistachio_1793892278361.jpg',
+    servings: '8–10 guests',
+    prepTime: '24h pre-order',
+    dietary: ['Vegetarian', 'Natural Fruit Only'],
+    flavorNotes: ['Nutty Pistachio', 'Wild Berries', 'Vanilla Bean'],
+    allergens: ['Dairy', 'Eggs', 'Gluten', 'Tree Nuts (Pistachio)'],
+    isCustomizable: true,
+    defaultSweetness: 75,
+    availableSizes: [
+      { label: 'Petite (6")', servings: '6–8 guests', priceMultiplier: 0.85 },
+      { label: 'Classic (8")', servings: '8–10 guests', priceMultiplier: 1 },
+      { label: 'Tiered Celebration', servings: '16–20 guests', priceMultiplier: 2.2 },
+    ],
+  },
+  {
+    id: 'earl-grey-bergamote',
+    name: 'Earl Grey & Meyer Lemon Chiffon',
+    frenchName: 'Chiffon Earl Grey & Citron Meyer',
+    category: 'signature-cakes',
+    price: 62,
+    description:
+      'Featherlight chiffon cake infused with premium single-estate bergamot Earl Grey tea, layered with house-made tart Meyer lemon curd and light Swiss meringue buttercream. Finished with candied lemon wheels and fresh garden thyme.',
+    shortDescription: 'Bergamot Earl Grey infusion, Meyer lemon curd & Swiss meringue.',
+    image: '/src/assets/images/cake_citrus_earlgrey_1793892279270.jpg',
+    servings: '8–10 guests',
+    prepTime: '24h pre-order',
+    dietary: ['Vegetarian', 'Citrus Blossom'],
+    flavorNotes: ['Bergamot Citrus', 'Floral Black Tea', 'Silky Meringue'],
+    allergens: ['Dairy', 'Eggs', 'Gluten'],
+    isCustomizable: true,
+    defaultSweetness: 75,
+    availableSizes: [
+      { label: 'Classic (7")', servings: '6–8 guests', priceMultiplier: 1 },
+      { label: 'Celebration (9")', servings: '10–12 guests', priceMultiplier: 1.4 },
+    ],
+  },
+  {
+    id: 'viennoiserie-royale-box',
+    name: 'Viennoiserie Royale Collection (Box of 6)',
+    frenchName: 'Le Coffret Viennoiserie Royale',
+    category: 'viennoiserie',
+    price: 36,
+    description:
+      'Baked fresh at dawn using certified AOP Charentes-Poitou churned butter and stone-ground French wheat. Includes two traditional croissants, two pain au chocolat with double Valrhona batons, and two spiced cardamom cinnamon cruffins.',
+    shortDescription: 'Two butter croissants, two pain au chocolat, two cardamom cruffins.',
+    image: '/src/assets/images/bakery_croissant_pastries_1793892280108.jpg',
+    servings: '6 artisan pastries',
+    prepTime: 'Same-day available',
+    dietary: ['Vegetarian', 'AOP Butter'],
+    flavorNotes: ['Browned Butter', 'Laminated Flakes', 'Cardamom Sugar'],
+    allergens: ['Dairy', 'Eggs', 'Gluten'],
+    isCustomizable: true,
+    defaultSweetness: 100,
+    availableSizes: [
+      { label: 'Box of 6', servings: '6 pastries', priceMultiplier: 1 },
+      { label: 'Box of 12 (Family / Event)', servings: '12 pastries', priceMultiplier: 1.85 },
+    ],
+  },
+  {
+    id: 'atelier-bespoke-gala',
+    name: 'Grand Atelier Bespoke Tiered Celebration',
+    frenchName: 'La Pièce Montée Atelier',
+    category: 'custom-studio',
+    price: 185,
+    description:
+      'Our showpiece multi-tiered celebration cake custom crafted to your exact palate. Choose your sponge foundations, silky ganache or fruit inserts, exterior lambeth piping, and personalized inscription plaque.',
+    shortDescription: 'Multi-tiered centerpiece tailored to your unique celebration & guest count.',
+    image: '/src/assets/images/hero_bakery_signature_1793892276298.jpg',
+    servings: '20–30 guests',
+    prepTime: '48h pre-order',
+    dietary: ['Customizable Diet', 'Gluten-Free upon request'],
+    flavorNotes: ['Multi-Tier Palate', 'Custom Florals', 'Bespoke Inscription'],
+    allergens: ['Configured per recipe selection'],
+    isCustomizable: true,
+    defaultSweetness: 75,
+    availableSizes: [
+      { label: '2-Tier (6" + 8")', servings: '18–24 guests', priceMultiplier: 1 },
+      { label: '3-Tier (6" + 8" + 10")', servings: '35–45 guests', priceMultiplier: 1.7 },
+    ],
+  },
+];
+
+export const CUSTOM_SPONGES = [
+  {
+    id: 'vanilla-bourbon',
+    name: 'Tahitian Vanilla Genoise',
+    description: 'Light, airy sponge infused with cold-pressed Bourbon vanilla bean',
+    colorHex: '#F6E5B8',
+    texture: 'Featherlight & tender',
+  },
+  {
+    id: 'valrhona-dark',
+    name: 'Valrhona 70% Chocolate Sponge',
+    description: 'Intense bittersweet cacao crumb with exceptional moisture and depth',
+    colorHex: '#42271D',
+    texture: 'Rich & velvety',
+  },
+  {
+    id: 'bronte-pistachio',
+    name: 'Sicilian Bronte Pistachio Crumb',
+    description: 'Nutty, earthy, naturally green sponge made with stone-ground raw pistachios',
+    colorHex: '#9BB07A',
+    texture: 'Fine crumb, aromatic',
+  },
+  {
+    id: 'earl-grey',
+    name: 'Earl Grey Lavender Chiffon',
+    description: 'Infused with organic bergamot tea leaves and subtle French lavender floral notes',
+    colorHex: '#D1BEA8',
+    texture: 'Cloud-like chiffon',
+  },
+  {
+    id: 'carrot-pecan',
+    name: 'Spiced Heirloom Carrot & Pecan',
+    description: 'Grated organic carrots, Ceylon cinnamon, and slow-roasted buttery pecans',
+    colorHex: '#C97A3E',
+    texture: 'Dense & succulent',
+  },
+];
+
+export const CUSTOM_FILLINGS = [
+  {
+    id: 'tahitian-cream',
+    name: 'Tahitian Vanilla Mascarpone',
+    description: 'Slow-whipped cultured mascarpone with visible vanilla bean caviar',
+    colorHex: '#FFF8EA',
+    price: 0,
+  },
+  {
+    id: 'salted-caramel',
+    name: 'Fleur de Sel Caramel & Hazelnut Praline',
+    description: 'Cooked copper-pot caramel with Brittany fleur de sel and roasted nut crunch',
+    colorHex: '#C8853A',
+    price: 6,
+  },
+  {
+    id: 'wild-berry-coulis',
+    name: 'Wild Alpine Strawberry & Raspberry Confit',
+    description: 'Tart, slow-simmered berry reduction preserving whole seed textures',
+    colorHex: '#9E1C38',
+    price: 5,
+  },
+  {
+    id: 'lemon-curd',
+    name: 'Tart Meyer Lemon & Passionfruit Curd',
+    description: 'Bright citrus curd emulsified with grass-fed churned butter',
+    colorHex: '#E8B923',
+    price: 5,
+  },
+  {
+    id: 'espresso-ganache',
+    name: 'Dark Chocolate Espresso Ganache',
+    description: 'Bittersweet chocolate melted with single-origin Ethiopian espresso',
+    colorHex: '#301F18',
+    price: 6,
+  },
+];
+
+export const CUSTOM_FINISHES = [
+  {
+    id: 'ivory-buttercream',
+    name: 'Ivory Silk Swiss Meringue',
+    description: 'Smooth, pristine satin finish with delicate hand-piped beaded base',
+    colorHex: '#FBF8F1',
+    price: 0,
+  },
+  {
+    id: 'sage-cream',
+    name: 'Botanical Sage Velvet',
+    description: 'Subtle sage-tinted natural buttercream with organic olive leaf charm',
+    colorHex: '#C5CDC1',
+    price: 8,
+  },
+  {
+    id: 'vintage-caramel',
+    name: 'Warm Caramel Ombré',
+    description: 'Gentle artisanal spatula texture transitioning from cream to toasted amber',
+    colorHex: '#E7CCA9',
+    price: 10,
+  },
+  {
+    id: 'semi-naked',
+    name: 'Semi-Naked Rustic Edge',
+    description: 'Contemporary naked cake edge highlighting the natural cake sponge layers',
+    colorHex: '#DFD1BD',
+    price: 0,
+  },
+  {
+    id: 'mirror-glaze',
+    name: 'Glossy Cocoa Mirror Glaze',
+    description: 'Flawless reflective glass glaze poured warm over chilled mousse layers',
+    colorHex: '#221510',
+    price: 14,
+  },
+];
+
+export const CUSTOM_GARNISHES = [
+  { id: 'gold-leaf', name: '24k Edible Gold Leaf', price: 8 },
+  { id: 'fresh-berries', name: 'Garden Berries & Fresh Figs', price: 12 },
+  { id: 'edible-florals', name: 'Pressed Edible Violas & Thyme', price: 9 },
+  { id: 'french-macarons', name: 'Handmade French Macarons (4pcs)', price: 11 },
+  { id: 'chocolate-curls', name: 'Artisan Dark Chocolate Shards', price: 7 },
+];

@@ -1,0 +1,6 @@
+{
+  "name": "Atelier Farine | Artisanal Bakery & Custom Cakes",
+  "description": "Artisanal bakery and couture cake studio offering bespoke recipe customization, handcrafted viennoiserie, and seamless checkout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
